@@ -5,7 +5,7 @@ const SettingScreen = () => {
   return (
     <View style={styles.container}>
       <Text>Setting Screen</Text>
-      <Button title="Click" onPress={() => Alert('Button Clicked!')} />
+      <Button title="Click" onPress={() => alert('Button Clicked!')} />
     </View>
   );
 };

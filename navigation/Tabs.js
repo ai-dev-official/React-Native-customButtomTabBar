@@ -14,14 +14,14 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
 
- const CustomTabBarButton = ({children, onPress}) => {
+ const CustomTabBarButton = ({children, onPress}) => (
    <TouchableOpacity
-     style={{
-       top: -30,
+     style={[styles.shadow, {
+       top: -35,
        justifyContent: 'center',
        alignItems: 'center',
-       ...styles.shadow,
-     }}
+      
+     }]}
      onPress={onPress}>
      <View
        style={{
@@ -32,15 +32,17 @@ const Tab = createBottomTabNavigator();
        }}>
        {children}
      </View>
-   </TouchableOpacity>;
- };
+   </TouchableOpacity>
+ );
 
 const Tabs = () => {
 
     return (
       <Tab.Navigator
+      tabBarLabelStyle={{ display: 'none' }}
         initialRouteName="Home"
         screenOptions={{
+          showLabel: false,
           tabBarActiveTintColor: '#e91e63',
           tabBarStyle: {
             position: 'absolute',
@@ -123,18 +125,23 @@ const Tabs = () => {
           name="Post"
           component={PostScreen}
           options={{
+            tabBarLabel: '', // set to empty string
+            showLabel: false,
             tabBarIcon: ({focused}) => (
               <Image
                 source={PostIcon}
                 resizeMode="contain"
                 style={{
-                  width: 30,
-                  height: 30,
-                  color: '#ffffff',
+                  top: 5,
+                  width: 50,
+                  height: 50,
+                  tintColor: '#ffffff',
                 }}
               />
             ),
-            tabBarButton: props => <CustomTabBarButton {...props} />,
+            tabBarButton: (props) => (
+            <CustomTabBarButton { ...props } />
+            ),
           }}
         />
         <Tab.Screen

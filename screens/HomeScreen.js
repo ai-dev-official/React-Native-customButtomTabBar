@@ -7,7 +7,7 @@ const HomeScreen = () => {
       <Text>Home Screen</Text>
       <Button 
       title="Click"
-      onPress={() => Alert('Button Clicked!')}
+      onPress={() => alert('Button Clicked!')}
       />
     </View>
   );
